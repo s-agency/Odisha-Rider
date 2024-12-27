@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: #f3f4f6;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 10px 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #38bdf8;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 1200px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .details {
+            flex: 1;
+            padding: 20px;
+        }
+        .details h2 {
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        .details img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .details p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .details span {
+            font-weight: 700;
+            color: #1d4ed8;
+        }
+        .qr-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        .qr-section p {
+            font-size: 1em;
+            color: #6b7280;
+        }
+        .form-button {
+            margin-top: 20px;
+        }
+        .form-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #1d4ed8;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .form-button a:hover {
+            background-color: #2563eb;
+        }
+    
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: #f3f4f6;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 10px 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #38bdf8;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 1200px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .details {
+            flex: 1;
+            padding: 20px;
+        }
+        .details h2 {
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        .details img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .details p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .details span {
+            font-weight: 700;
+            color: #1d4ed8;
+        }
+        .qr-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        .qr-section p {
+            font-size: 1em;
+            color: #6b7280;
+        }
+        .form-button {
+            margin-top: 20px;
+        }
+        .form-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #1d4ed8;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .form-button a:hover {
+            background-color: #2563eb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .details, .qr-section {
+                flex: none;
+                width: 100%;
+                padding: 10px;
+            }
+            .details img {
+                max-width: 100%;
+            }
+            .navbar a {
+                font-size: 1em;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="bike.html">Home</a>
+        <span>Payment Section</span>
+    </div>
+
+    <div class="container">
+        <div class="details">
+            <h2>Payment Details</h2>
+            <img src="glamour-201766c86889b4b66.avif" alt="Car Image">
+            <p><strong>Bike Name:</strong> <span>Glamour</span></p>
+            <p><strong>For Booking:</strong> <span>₹250</span></p>
+            <p><strong>Total Price:</strong> <span>₹400-800(12hr/24hr)</span></p>
+            <p><strong>Available Kilometer:</strong> <span>600 KM</span></p>
+            <p><strong>Payment Instructions:</strong></p>
+            <ul>
+                <li>First Payment: 50% of the total price.</li>
+                <li>After payment, the bike will be delivered to your location.</li>
+                <li>Remaining Payment: Pay the rest upon delivery.</li>
+                <li>For Contact:9861467720/6372105534</li>
+            </ul>
+        </div>
+
+        <div class="qr-section">
+            <img src="ae765e3d-45ca-4697-9bb9-1cf575281ee1.jpg" alt="QR Code">
+            <p>Scan the QR code to make your payment.And also submit the Payment Proof</p>
+            <div class="form-button">
+                <a href="https://forms.gle/your-google-form-link" target="_blank">Click For Payment Proof</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

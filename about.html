@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      margin: 0;
+    }
+
+    /* Container for the whole About Us page */
+    .about-us-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px;
+      text-align: center;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .founders {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 30px;
+      animation: slideIn 1.5s ease-out;
+    }
+
+    .founder-card {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .founder-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .founder-card img {
+      width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .founder-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .founder-role {
+      font-size: 1.1rem;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .founder-details {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .founder-details b {
+      font-weight: bold;
+    }
+
+    /* Animation Effects */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .founders {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-us-container">
+    <h1>About Us</h1>
+
+    <p>We are a team of passionate individuals driven by innovation and excellence. Our journey began with a shared vision to make a difference in the world through technology.</p>
+
+    <div class="founders">
+      <!-- Founder 1 -->
+      <div class="founder-card">
+        <img src="IMG_20241227_233315.jpg" alt="Satyajit Swain">
+        <div class="founder-name">Satyajit Swain</div>
+        <div class="founder-role">Founder & CEO</div>
+        <div class="founder-details">
+          <p><b>College:</b> IIT Patna</p>
+          <p><b>Bio:</b> Satyajit is the visionary behind our company. With a strong background in technology and innovation, he leads our team toward success and business development,.</p>
+        </div>
+      </div>
+
+      <!-- Founder 2 -->
+      <div class="founder-card">
+        <img src="Screenshot_2024-12-27-23-38-45-702_com.instagram.android-edit.jpg" alt="Dibyajyoti Patra">
+        <div class="founder-name">Dibyajyoti Patra</div>
+        <div class="founder-role">Co-Founder</div>
+        <div class="founder-details">
+          <p><b>College:</b> GIFT, BBSR</p>
+          <p><b>Bio:</b> Dibyajyoti brings a wealth of experience in strategic planning and ensuring our company thrives in competitive markets.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Our team is dedicated to transforming ideas into reality, ensuring that every project we undertake is executed with precision, integrity, and passion.</p>
+  </div>
+
+</body>
+</html>
