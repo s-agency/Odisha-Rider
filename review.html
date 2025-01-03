@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      color: #007BFF;
+    }
+    .branch-section {
+      margin: 2rem 0;
+    }
+    .review {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+    .review:last-child {
+      border-bottom: none;
+    }
+    .review h4 {
+      margin: 0;
+    }
+    .review p {
+      margin: 0.5rem 0 0;
+    }
+    .form-container {
+      margin-top: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 0.5rem 0 0.2rem;
+    }
+    input, select, textarea, button {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Customer Reviews</h1>
+  </header>
+  <div class="container">
+    <h2>Reviews by Branch</h2>
+
+    <!-- Balasore Branch -->
+    <div class="branch-section" id="balasore-reviews">
+      <h3>Balasore Branch</h3>
+    </div>
+
+    <!-- Bhubaneswar Branch -->
+    <div class="branch-section" id="bhubaneswar-reviews">
+      <h3>Bhubaneswar Branch</h3>
+    </div>
+
+    <!-- Review Form -->
+    <div class="form-container">
+      <h2>Share Your Experience</h2>
+      <form id="reviewForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+        
+        <label for="branch">Branch</label>
+        <select id="branch" required>
+          <option value="balasore">Balasore</option>
+          <option value="bhubaneswar">Bhubaneswar</option>
+        </select>
+        
+        <label for="rating">Rating</label>
+        <select id="rating" required>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="1">⭐</option>
+        </select>
+        
+        <label for="review">Your Review</label>
+        <textarea id="review" rows="4" placeholder="Write your experience here..." required></textarea>
+        
+        <button type="button" id="submitReview">Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Preloaded reviews
+    const preloadedReviews = [
+      { name: "Rakesh", branch: "balasore", rating: 5, review: "Amazing service and clean vehicles!" },
+      { name: "Ananya", branch: "balasore", rating: 4, review: "Good experience, but delivery was a bit delayed." },
+      { name: "Rohit", branch: "balasore", rating: 5, review: "The vehicle was in perfect condition." },
+      { name: "Sneha", branch: "balasore", rating: 3, review: "Affordable but needs better maintenance." },
+      { name: "Priya", branch: "balasore", rating: 4, review: "Great support staff and reasonable pricing." },
+      { name: "Amit", branch: "bhubaneswar", rating: 5, review: "Excellent service and quick response!" },
+      { name: "Kavita", branch: "bhubaneswar", rating: 4, review: "Friendly staff and good options for vehicles." },
+      { name: "Vikram", branch: "bhubaneswar", rating: 5, review: "Superb experience, would rent again!" },
+      { name: "Neha", branch: "bhubaneswar", rating: 3, review: "Vehicle was okay, but pickup was late." },
+      { name: "Manoj", branch: "bhubaneswar", rating: 4, review: "Reasonable rates and well-maintained vehicles." }
+    ];
+
+    // Load reviews from LocalStorage or preloaded data
+    window.onload = function() {
+      let reviews = JSON.parse(localStorage.getItem('reviews')) || preloadedReviews;
+
+      // If LocalStorage is empty, initialize with preloaded reviews
+      if (!localStorage.getItem('reviews')) {
+        localStorage.setItem('reviews', JSON.stringify(preloadedReviews));
+      }
+
+      reviews.forEach(addReviewToPage);
+    };
+
+    // Add a new review to the page and save it to LocalStorage
+    document.getElementById('submitReview').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const branch = document.getElementById('branch').value;
+      const rating = document.getElementById('rating').value;
+      const review = document.getElementById('review').value;
+
+      if (name && branch && rating && review) {
+        const reviewData = { name, branch, rating, review };
+        addReviewToPage(reviewData);
+
+        // Save to LocalStorage
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        reviews.push(reviewData);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Clear form fields
+        document.getElementById('reviewForm').reset();
+        alert('Thank you for your review!');
+      } else {
+        alert('Please fill out all fields!');
+      }
+    });
+
+    // Function to add a review to the correct branch section
+    function addReviewToPage({ name, branch, rating, review }) {
+      const reviewSection = branch === 'balasore' ? 'balasore-reviews' : 'bhubaneswar-reviews';
+      const reviewsContainer = document.getElementById(reviewSection);
+
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <h4>${name} <span>${'⭐'.repeat(rating)}</span></h4>
+        <p>"${review}"</p>
+      `;
+
+      reviewsContainer.appendChild(reviewElement);
+    }
+  </script>
+</body>
+</html>
